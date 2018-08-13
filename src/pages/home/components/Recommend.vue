@@ -19,33 +19,11 @@
 <script>
 export default {
   name: 'HomeRecomment',
+  props: {
+    recommendList: Array
+  },
   data () {
     return {
-      recommendList: [{
-        id: '0001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1803/12/126471e0966aca5ba3.img.jpg_200x200_f1286016.jpg',
-        title: '北京国际鲜花港',
-        desc: '啦啦啦啦啦啦啦'
-      },
-      {
-        id: '0002',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1803/12/126471e0966aca5ba3.img.jpg_200x200_f1286016.jpg',
-        title: '北京国际鲜花港',
-        desc: '啦啦啦啦啦啦啦'
-      },
-      {
-        id: '0003',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1803/12/126471e0966aca5ba3.img.jpg_200x200_f1286016.jpg',
-        title: '北京国际鲜花港',
-        desc: '啦啦啦啦啦啦啦'
-      },
-      {
-        id: '0004',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1803/12/126471e0966aca5ba3.img.jpg_200x200_f1286016.jpg',
-        title: '北京国际鲜花港',
-        desc: '啦啦啦啦啦啦啦'
-      }
-      ]
     }
   },
   components: {}
