@@ -1,6 +1,15 @@
 <template>
   <div class="list">
-    <div class="item" v-for="(item,key) of cities" :key="key">{{key}}</div>
+    <div class="item"
+      v-for="item of letters"
+      :key="item"
+      :ref="item"
+      @touchstart="handleTocuhStart"
+      @touchmove="handleTocuhMove"
+      @touchend="handleTocuhEnd"
+      @click="handleLetterClick"
+    >
+      {{item}}</div>
   </div>
 </template>
 
@@ -12,9 +21,43 @@ export default {
   },
   data () {
     return {
+      touchStatus: false
     }
   },
-  components: {}
+  computed: {
+    letters () {
+      const letters = []
+      for (let i in this.cities) {
+        letters.push(i)
+      }
+      return letters
+    }
+  },
+  methods: {
+    handleLetterClick (e) {
+      this.$emit('change', e.target.innerText)
+      // for (let i = 0; i < this.$refs.item.length; i++) {
+      //   this.$refs.item[i].style.color = '#00bcd4'
+      // }
+      // e.target.style.color = 'red'
+    },
+    handleTocuhStart () {
+      this.touchStatus = true
+    },
+    handleTocuhMove (e) {
+      if (this.touchStatus) {
+        const startY = this.$refs['A'][0].offsetTop
+        const touchY = e.touches[0].clientY - 79
+        const index = Math.floor((touchY - startY) / 20)
+        if (index >= 0 && index < this.letters.length) {
+          this.$emit('change', this.letters[index])
+        }
+      }
+    },
+    handleTocuhEnd () {
+      this.touchStatus = false
+    }
+  }
 }
 </script>
 
